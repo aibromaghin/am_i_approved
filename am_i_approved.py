@@ -66,7 +66,8 @@ df_pred[cols] = scaler.transform(df_pred[cols])
 user_data = df_pred.to_numpy()
 
 # generate prediction
-model = pickle.load(open('random_forest.pkl', 'rb'))
+with open('random_forest.pkl','rb') as f:
+     model = pickle.load(f)
 prediction = model.predict(user_data)
 # get class probabilities,
 proba = model.predict_proba(user_data)
